@@ -11,7 +11,7 @@ terraform {
     }
   }
   backend "s3" {
-        key = "aws/confluent-deploy/terraform.state"
+    key = "aws/confluent-deploy/terraform.state"
   }
 }
 
