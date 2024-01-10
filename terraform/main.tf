@@ -10,6 +10,9 @@ terraform {
       version = "1.57.0"
     }
   }
+  backend "s3" {
+        key = "aws/confluent-deploy/terraform.state"
+  }
 }
 
 provider "confluent" {
