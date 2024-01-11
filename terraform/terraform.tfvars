@@ -1,8 +1,8 @@
-aws_account_id = "012345678901"
-vpc_id = "vpc-abcdef0123456789a"
-region = "us-east-1"
+aws_account_id = "492737776546"
+vpc_id = "vpc-0fee7be7e58e082d2"
+region = "us-west-2"
 subnets_to_privatelink = {
-  "use1-az1" = "subnet-0123456789abcdef0",
-  "use1-az4" = "subnet-0123456789abcdef1",
-  "use1-az5" = "subnet-0123456789abcdef2",
+  "usw2-az1" = "subnet-044f59818aae1c797",
+  "usw2-az2" = "subnet-0ae714de35a59e546",
+  "usw2-az3" = "subnet-091941e1b55d987d5",
 }
