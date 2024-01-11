@@ -30,8 +30,8 @@ jobs:
         id: plan
         run: |-
           terraform plan \  
-          -var="confluent_cloud_api_key=$CONFLUENT_CLOUD_API_KEY" \
-          -var="confluent_cloud_api_secret=$CONFLUENT_CLOUD_API_SECRET" \
+          -var='confluent_cloud_api_key=$CONFLUENT_CLOUD_API_KEY' \
+          -var='confluent_cloud_api_secret=$CONFLUENT_CLOUD_API_SECRET' \
           -out=PLAN
         working-directory: ./terraform
       - name: Terraform Apply
