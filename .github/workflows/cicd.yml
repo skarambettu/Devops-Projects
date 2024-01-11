@@ -26,13 +26,22 @@ jobs:
         id: init
         run: terraform init -backend-config="bucket=$TF_STATE_BUCKET_NAME" -backend-config="region=us-west-2"
         working-directory: ./terraform
+        
+      - name: Setup Terraform variables
+        working-directory: ./terraform
+        id: vars
+        run: |-
+          cat > qut.terraform.tfvars <<EOF
+          confluent_cloud_api_key = "${{ secrets.CONFLUENT_CLOUD_API_KEY }}"
+          confluent_cloud_api_secret = "${{ secrets.CONFLUENT_CLOUD_API_SECRET }}"
+          aws_access_key_id     = "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          aws_secret_access_key = "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          EOF
+          cat qut.terraform.tfvars
       - name: Terraform Plan
         id: plan
         run: |
-          terraform plan \  
-          -var='confluent_cloud_api_key=$CONFLUENT_CLOUD_API_KEY' \
-          -var='confluent_cloud_api_secret=$CONFLUENT_CLOUD_API_SECRET' \
-          -out=PLAN
+          terraform plan -var-file=qut.terraform.tfvars -out=PLAN
         working-directory: ./terraform
       - name: Terraform Apply
         id: apply
